@@ -17,7 +17,6 @@ import {
   ArrowLeft,
   Download
 } from "lucide-react";
-import { PieChart, Pie, Cell, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from "recharts";
 import { calculateResults, AssessmentResults } from "@/utils/scoring";
 
 const Results = () => {
@@ -49,10 +48,10 @@ const Results = () => {
 
   const getRecommendationColor = (recommendation: string) => {
     switch (recommendation) {
-      case "Yes": return "bg-assessment-green";
-      case "Maybe": return "bg-assessment-orange";  
+      case "Yes": return "bg-accent";
+      case "Maybe": return "bg-secondary";  
       case "No": return "bg-destructive";
-      default: return "bg-assessment-gray";
+      default: return "bg-muted";
     }
   };
 
@@ -65,7 +64,7 @@ const Results = () => {
     }
   };
 
-  const COLORS = ['hsl(214, 84%, 56%)', 'hsl(142, 71%, 45%)', 'hsl(35, 91%, 62%)', 'hsl(262, 83%, 58%)', 'hsl(220, 9%, 46%)'];
+  const COLORS = ['hsl(222, 47%, 11%)', 'hsl(142, 71%, 45%)', 'hsl(35, 91%, 62%)', 'hsl(262, 83%, 58%)', 'hsl(220, 9%, 46%)'];
 
   return (
     <div className="min-h-screen bg-gradient-hero">
@@ -108,27 +107,26 @@ const Results = () => {
           <Card className="bg-gradient-card border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Brain className="w-5 h-5 text-assessment-blue" />
+                <Brain className="w-5 h-5 text-primary" />
                 WISCAR Framework Analysis
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="h-80">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadarChart data={results.wiscar}>
-                    <PolarGrid />
-                    <PolarAngleAxis dataKey="dimension" />
-                    <PolarRadiusAxis angle={30} domain={[0, 100]} />
-                    <Radar
-                      name="Score"
-                      dataKey="score"
-                      stroke="hsl(214, 84%, 56%)"
-                      fill="hsl(214, 84%, 56%)"
-                      fillOpacity={0.3}
-                      strokeWidth={2}
-                    />
-                  </RadarChart>
-                </ResponsiveContainer>
+              <div className="space-y-4">
+                {results.wiscar.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between">
+                    <span className="text-sm font-medium">{item.dimension}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 bg-muted rounded-full h-2">
+                        <div 
+                          className="h-2 bg-primary rounded-full transition-all"
+                          style={{ width: `${item.score}%` }}
+                        />
+                      </div>
+                      <span className="text-sm font-bold">{item.score}%</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -137,30 +135,26 @@ const Results = () => {
           <Card className="bg-gradient-card border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Target className="w-5 h-5 text-assessment-green" />
+                <Target className="w-5 h-5 text-accent" />
                 Score Breakdown
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="h-80">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={results.breakdown}
-                      cx="50%"
-                      cy="50%"
-                      labelLine={false}
-                      label={({ name, value }) => `${name}: ${value}%`}
-                      outerRadius={80}
-                      fill="#8884d8"
-                      dataKey="score"
-                    >
-                      {results.breakdown.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                      ))}
-                    </Pie>
-                  </PieChart>
-                </ResponsiveContainer>
+              <div className="space-y-4">
+                {results.breakdown.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between">
+                    <span className="text-sm font-medium">{item.category}</span>
+                    <div className="flex items-center gap-2">
+                      <div className="w-24 bg-muted rounded-full h-2">
+                        <div 
+                          className="h-2 bg-accent rounded-full transition-all"
+                          style={{ width: `${item.score}%` }}
+                        />
+                      </div>
+                      <span className="text-sm font-bold">{item.score}%</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -169,7 +163,7 @@ const Results = () => {
           <Card className="bg-gradient-card border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Lightbulb className="w-5 h-5 text-assessment-orange" />
+                <Lightbulb className="w-5 h-5 text-secondary" />
                 Top Career Paths
               </CardTitle>
             </CardHeader>
@@ -194,7 +188,7 @@ const Results = () => {
           <Card className="bg-gradient-card border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-assessment-purple" />
+                <BookOpen className="w-5 h-5 text-muted" />
                 Recommended Learning Path
               </CardTitle>
             </CardHeader>
@@ -202,7 +196,7 @@ const Results = () => {
               <div className="space-y-4">
                 {results.learningPath.map((step, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-full bg-assessment-blue text-white flex items-center justify-center text-sm font-bold">
+                    <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
                       {index + 1}
                     </div>
                     <div className="flex-1">
@@ -231,13 +225,13 @@ const Results = () => {
           <CardContent className="space-y-6">
             <div>
               <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-assessment-green" />
+                <TrendingUp className="w-5 h-5 text-accent" />
                 Strengths
               </h3>
               <ul className="space-y-2">
                 {results.strengths.map((strength, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-green mt-1 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{strength}</span>
                   </li>
                 ))}
@@ -248,13 +242,13 @@ const Results = () => {
 
             <div>
               <h3 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                <Target className="w-5 h-5 text-assessment-orange" />
+                <Target className="w-5 h-5 text-secondary" />
                 Areas for Improvement
               </h3>
               <ul className="space-y-2">
                 {results.improvements.map((improvement, index) => (
                   <li key={index} className="flex items-start gap-2">
-                    <AlertCircle className="w-4 h-4 text-assessment-orange mt-1 flex-shrink-0" />
+                    <AlertCircle className="w-4 h-4 text-secondary mt-1 flex-shrink-0" />
                     <span className="text-muted-foreground">{improvement}</span>
                   </li>
                 ))}
@@ -284,7 +278,7 @@ const Results = () => {
           </Button>
           <Button
             onClick={() => window.print()}
-            className="flex items-center gap-2 bg-assessment-blue hover:bg-assessment-blue/90"
+            className="flex items-center gap-2 bg-primary hover:bg-primary/90"
           >
             <Download className="w-4 h-4" />
             Download Report

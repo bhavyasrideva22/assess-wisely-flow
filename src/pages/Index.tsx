@@ -52,14 +52,14 @@ const Index = () => {
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-16">
         <div className="text-center max-w-4xl mx-auto">
-          <Badge className="mb-6 bg-assessment-blue/10 text-assessment-blue border-assessment-blue/20">
+          <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
             <Zap className="w-4 h-4 mr-2" />
             AI-Powered Career Assessment
           </Badge>
           
           <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6 leading-tight">
             Compliance Automation Specialist
-            <span className="block text-assessment-blue">Readiness Assessment</span>
+            <span className="block text-primary">Readiness Assessment</span>
           </h1>
           
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed max-w-2xl mx-auto">
@@ -71,7 +71,7 @@ const Index = () => {
             <Button 
               size="lg"
               onClick={() => navigate('/assessment')}
-              className="bg-assessment-blue hover:bg-assessment-blue/90 text-white px-8 py-4 text-lg font-semibold flex items-center gap-3 transition-all hover:scale-105"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold flex items-center gap-3 transition-all hover:scale-105"
             >
               <PlayCircle className="w-6 h-6" />
               Start Assessment
@@ -92,7 +92,7 @@ const Index = () => {
             {stats.map((stat, index) => (
               <Card key={index} className="bg-gradient-card border-0 shadow-lg">
                 <CardContent className="p-6 text-center">
-                  <div className="flex items-center justify-center text-assessment-blue mb-2">
+                  <div className="flex items-center justify-center text-primary mb-2">
                     {stat.icon}
                   </div>
                   <div className="text-2xl font-bold text-foreground mb-1">{stat.value}</div>
@@ -113,7 +113,7 @@ const Index = () => {
             {features.map((feature, index) => (
               <Card key={index} className="bg-gradient-card border-0 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
                 <CardHeader className="text-center pb-4">
-                  <div className="w-12 h-12 bg-assessment-blue/10 rounded-xl flex items-center justify-center text-assessment-blue mx-auto mb-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mx-auto mb-4">
                     {feature.icon}
                   </div>
                   <CardTitle className="text-lg">{feature.title}</CardTitle>
@@ -145,19 +145,19 @@ const Index = () => {
                 <h4 className="font-semibold text-foreground mb-3">Key Responsibilities:</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-green mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
                     Automate compliance monitoring and reporting
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-green mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
                     Develop risk assessment automation tools
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-green mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
                     Implement GRC software solutions
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-green mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
                     Design compliance workflow automation
                   </li>
                 </ul>
@@ -167,19 +167,19 @@ const Index = () => {
                 <h4 className="font-semibold text-foreground mb-3">Industries:</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-blue mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                     Financial Services & Banking
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-blue mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                     Healthcare & Life Sciences
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-blue mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                     Technology & Software
                   </li>
                   <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-assessment-blue mt-0.5 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                     Manufacturing & Energy
                   </li>
                 </ul>

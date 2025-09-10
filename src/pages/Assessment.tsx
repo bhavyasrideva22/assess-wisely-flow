@@ -122,7 +122,7 @@ const Assessment = () => {
               <Button
                 onClick={handleNext}
                 disabled={!canProceed}
-                className="flex items-center gap-2 bg-assessment-blue hover:bg-assessment-blue/90"
+                className="flex items-center gap-2 bg-primary hover:bg-primary/90"
               >
                 {currentSection === "technical" && currentQuestion === currentQuestions.length - 1 
                   ? "View Results" 
